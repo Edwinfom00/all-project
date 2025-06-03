@@ -1,0 +1,20 @@
+# Règles personnalisées pour Snort 3
+# Format: action proto src_ip src_port direction dst_ip dst_port (msg:"message"; options)
+
+# Détection de scan de ports
+alert tcp any any -> $HOME_NET any (msg:"Port Scan détecté"; flow:stateless; flags:S; threshold:type both,track by_src,count 50,seconds 5; classtype:attempted-recon; sid:1000001; rev:1;)
+
+# Détection de tentative de SQL injection
+alert tcp any any -> $HOME_NET $SQL_PORTS (msg:"SQL Injection détectée"; flow:to_server,established; content:"%27"; pcre:"/(\%27)|(\')|(\-\-)|(%23)|(#)/i"; classtype:web-application-attack; sid:1000002; rev:1;)
+
+# Détection de tentative de brute force SSH
+alert tcp any any -> $HOME_NET $SSH_PORTS (msg:"SSH Brute Force détecté"; flow:to_server,established; threshold:type both,track by_src,count 5,seconds 30; classtype:attempted-admin; sid:1000003; rev:1;)
+
+# Détection de tentative d'injection de commande
+alert tcp any any -> $HOME_NET $HTTP_PORTS (msg:"Command Injection détectée"; flow:to_server,established; content:"|3b|"; pcre:"/(;|\||`)/"; classtype:web-application-attack; sid:1000004; rev:1;)
+
+# Détection de DDoS
+alert tcp any any -> $HOME_NET any (msg:"DDoS SYN Flood détecté"; flow:stateless; flags:S; threshold:type both,track by_dst,count 1000,seconds 5; classtype:attempted-dos; sid:1000005; rev:1;)
+
+# Détection de tentative XSS
+alert tcp any any -> $HOME_NET $HTTP_PORTS (msg:"XSS détecté"; flow:to_server,established; content:"<script>"; nocase; pcre:"/<script.*?>.*?<\/script>/i"; classtype:web-application-attack; sid:1000006; rev:1;) 

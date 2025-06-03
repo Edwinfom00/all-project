@@ -1,0 +1,1019 @@
+[
+  {
+    "timestamp": "2025-06-03T12:48:27.488458",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:28.533476",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:29.652596",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:30.625383",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:31.759806",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:32.702936",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:33.745685",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:34.782027",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:35.822664",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:36.864384",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:37.905819",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:38.954029",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:40.032579",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:41.081255",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:42.231427",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:43.184961",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:44.263742",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:45.250825",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:46.310418",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:47.367600",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:48.417819",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:49.476569",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:50.530715",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:51.601185",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:52.725364",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:53.686399",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:54.725512",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:55.785461",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:56.829115",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:57.871489",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:48:58.954552",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:00.015913",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:01.085654",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:02.145364",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:03.281525",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:04.225605",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:05.277055",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:06.343529",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:07.385183",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:08.425978",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:09.466008",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:10.506585",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:11.562821",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:12.608580",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:13.730708",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:14.678241",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:15.723180",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:16.771553",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:17.817460",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:18.855294",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:19.895723",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:20.942107",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:22.020899",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:23.092272",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:24.218920",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:25.171572",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:26.215120",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:27.301756",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:28.362891",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:29.409081",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:30.453235",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:31.510668",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:32.562871",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:33.687486",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:34.635902",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:35.685480",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:36.731432",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:37.773518",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:38.826568",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:39.868272",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:40.928307",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:42.006735",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:43.052711",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:44.203981",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:45.151464",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:46.227741",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:47.283288",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:48.352771",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:49.404648",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:50.460390",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:51.518556",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:52.574053",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:53.624642",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:54.754336",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:55.693432",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:56.747387",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:57.789203",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:58.845178",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:49:59.940554",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:00.904632",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:01.989310",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:03.064012",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:04.121138",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:05.259319",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:06.214513",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:07.294581",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:08.343893",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:09.405968",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:10.448741",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:11.531236",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:12.597549",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:13.701661",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:14.806647",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:15.940370",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:16.898926",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:17.946924",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:18.997373",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:20.067562",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:21.148938",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:22.205521",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:23.272884",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:24.333680",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  },
+  {
+    "timestamp": "2025-06-03T12:50:25.407772",
+    "source_ip": "127.0.0.1",
+    "destination_ip": "127.0.0.1",
+    "protocol": 1,
+    "attack_type": "Suspicious Connection",
+    "severity": "high",
+    "confidence": 0.8
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "connections": [],
+  "alerts": [],
+  "stats": {
+    "total_connections": 0,
+    "total_packets": 0,
+    "total_alerts": 0,
+    "active_threats": 0,
+    "blocked_attempts": 0,
+    "system_health": 100
+  }
+}

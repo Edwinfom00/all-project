@@ -1,0 +1,102 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+
+# Virtual Environment
+venv/
+ENV/
+
+# Node.js
+node_modules/
+.next/
+out/
+.DS_Store
+*.pem
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Datasets
+data/raw/
+data/processed/
+*.csv
+*.zip
+*.gz
+
+# Snort
+*.log
+*.pid
+*.pcap
+
+# Modèles
+*.joblib
+*.pkl
+*.h5
+
+# Système
+.DS_Store
+Thumbs.db 
+
+#node_modules
+node_modules/
+
+
+
+# Backend data & models
+backend-flask/app/data/*.json
+backend-flask/app/data/*.joblib
+backend-flask/app/data/*.h5
+backend-flask/app/data/*.pkl
+backend-flask/data/raw/
+backend-flask/data/processed/
+backend-flask/data/models/
+
+# Frontend build & deps
+frontend-next/node_modules/
+frontend-next/.next/
+frontend-next/out/
+
+# Environnements & caches
+.env
+.env.*
+venv/
+__pycache__/
+*.pyc
+
+# IDE & système
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
