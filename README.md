@@ -131,7 +131,5 @@ python -m app.model.train_model
 ## Contact
 Pour toute question ou contribution, ouvrez une issue ou contactez l'équipe projet.
 
-## 📧 Contact
 
-Votre Email - [@Email](edwinfom05@gmail.com)
 
