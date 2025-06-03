@@ -77,7 +77,6 @@ backend-flask/app/data/*.joblib
 backend-flask/app/data/*.h5
 backend-flask/app/data/*.pkl
 backend-flask/data/raw/
-backend-flask/data/processed/
 backend-flask/data/models/
 
 # Frontend build & deps
