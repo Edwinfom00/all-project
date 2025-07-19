@@ -45,12 +45,7 @@ yarn-error.log*
 *.swp
 *.swo
 
-# Datasets
-data/raw/
-data/processed/
-*.csv
-*.zip
-*.gz
+
 
 # Snort
 *.log
