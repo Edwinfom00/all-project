@@ -26,41 +26,38 @@ def parse_snort_log(log_line: str) -> Dict[str, Any]:
 def extract_features(log_data: Dict[str, Any]) -> List[float]:
     """
     Extrait les features pour le modèle ML à partir des données de log.
-    À adapter selon les features utilisées par le modèle.
-    
+    Aligne les features sur le dataset d'entraînement NSL-KDD (exemple simplifié).
     Args:
         log_data: Dictionnaire contenant les données du log
-        
     Returns:
         Liste des features extraites
     """
-    # TODO: Implémenter la vraie extraction de features
-    # Exemple de features basiques (à adapter)
     features = []
-    
-    # Conversion des IPs en nombres
-    if 'source_ip' in log_data:
-        ip_parts = log_data['source_ip'].split('.')
-        features.extend([int(part) for part in ip_parts])
-    
-    # Ajout des ports
+    # Conversion des IPs en nombres (4 octets)
+    for ip_key in ['source_ip', 'destination_ip']:
+        ip = log_data.get(ip_key, '0.0.0.0')
+        features.extend([int(part) for part in ip.split('.')])
+    # Ports
     features.append(int(log_data.get('source_port', 0)))
     features.append(int(log_data.get('dest_port', 0)))
-    
+    # Protocole (one-hot encoding simplifié)
+    proto = log_data.get('protocol', '').lower()
+    proto_map = {'tcp': [1,0,0], 'udp': [0,1,0], 'icmp': [0,0,1]}
+    features.extend(proto_map.get(proto, [0,0,0]))
+    # Classification (optionnel, si présente)
+    # features.append(int(log_data.get('priority', 0)))
     return features
+
 
 def normalize_features(features: List[float]) -> List[float]:
     """
     Normalise les features pour le modèle ML.
-    À adapter selon la normalisation utilisée lors de l'entraînement.
-    
+    Utilise des bornes réalistes pour chaque feature (aligné sur l'entraînement).
     Args:
         features: Liste des features à normaliser
-        
     Returns:
         Liste des features normalisées
     """
-    # TODO: Implémenter la vraie normalisation
-    # Exemple de normalisation simple (à adapter)
-    max_vals = [255, 255, 255, 255, 65535, 65535]  # Valeurs max pour IP et ports
-    return [f / m for f, m in zip(features, max_vals)] 
+    # 4 octets IP source, 4 octets IP dest, 2 ports, 3 protocoles
+    max_vals = [255]*8 + [65535, 65535] + [1,1,1]
+    return [f / m if m != 0 else 0 for f, m in zip(features, max_vals)] 

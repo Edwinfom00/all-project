@@ -76,24 +76,26 @@ def predict_intrusion(data: Dict[str, Any]) -> Tuple[bool, str]:
 
 def preprocess_data(data: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Prétraite les données pour le modèle.
-    À implémenter avec le vrai prétraitement des données.
+    Prétraite les données pour le modèle : extrait et normalise les features.
     """
-    # TODO: Implémenter le vrai prétraitement
+    features = extract_features(data)
+    features_normalized = normalize_features(features)
+    data['features'] = features_normalized
     return data
 
-def load_model():
+
+def load_model(model_path=None, scaler_path=None, encoder_path=None):
     """
     Charge le modèle ML depuis le fichier.
-    À implémenter avec le vrai chargement du modèle.
     """
-    # TODO: Charger le vrai modèle
-    pass
+    if model_path is None:
+        # Par défaut, charge le dernier modèle
+        return load_latest_model()
+    return IDSModel.load(model_path, scaler_path, encoder_path)
 
-def save_model():
+
+def save_model(model, model_path, scaler_path=None, encoder_path=None):
     """
     Sauvegarde le modèle ML dans un fichier.
-    À implémenter avec la vraie sauvegarde du modèle.
     """
-    # TODO: Sauvegarder le vrai modèle
-    pass 
+    model.save(model_path, scaler_path, encoder_path) 

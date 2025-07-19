@@ -1,121 +1,51 @@
-# Backend Flask - Système de Détection d'Intrusions avec IA
+# Backend Flask – IDS AI System
 
-Ce backend implémente un système de détection d'intrusions (IDS) basé sur l'apprentissage profond, utilisant une architecture hybride CNN-LSTM.
+## Nouvelles routes API
 
-## Architecture du Backend
+### 1. `/api/settings` (GET/POST)
+- **GET** : retourne la configuration système (seuils d’alerte, modules actifs)
+- **POST** : modifie et persiste la configuration (dans `data/settings.json`)
+- Utilisé par la page `/settings` du frontend
 
-```
-backend-flask/
-├── app/
-│   ├── model/              # Modèles d'IA et logique de prédiction
-│   │   ├── tf_model.py     # Implémentation du modèle CNN-LSTM
-│   │   └── train_model.py  # Script d'entraînement
-│   ├── routes/             # Routes de l'API
-│   │   └── alerts.py       # Endpoints pour les alertes
-│   └── __init__.py         # Configuration de l'application
-├── data/
-│   ├── models/             # Modèles entraînés
-│   └── processed/          # Données d'entraînement
-└── requirements.txt        # Dépendances Python
-```
+### 2. `/api/rules` (GET/POST)
+- **GET** : retourne la liste des règles de détection
+- **POST** : remplace la liste des règles (dans `data/rules.json`)
+- Utilisé par la page `/rules` du frontend
 
-## Modèle d'IA
+## Stockage des paramètres
+- Les paramètres sont stockés dans `backend-flask/app/data/settings.json` et `backend-flask/app/data/rules.json`
 
-### Architecture du Modèle
+## Brancher le frontend
+- Le frontend doit pointer sur `http://localhost:5000/api/settings` et `/api/rules`
+- Les blueprints sont enregistrés dans `app/__init__.py` (centralisation)
 
-Le modèle utilise une architecture hybride CNN-LSTM :
+## Prérequis
+- Redémarrer le serveur Flask après ajout/modification de routes
+- Vérifier que les fichiers de données existent ou seront créés automatiquement
 
-1. **Couches CNN (Convolutionnelles)**
-   - Extraction de caractéristiques locales
-   - 2 couches Conv1D (64 et 128 filtres)
-   - BatchNormalization pour stabiliser l'apprentissage
-   - MaxPooling1D pour réduire la dimensionnalité
-   - Dropout (0.25) pour éviter le surapprentissage
+## Exemples de requêtes
 
-2. **Couches LSTM**
-   - Capture des dépendances temporelles
-   - 2 couches LSTM (128 et 64 unités)
-   - Dropout entre les couches
-
-3. **Couches Denses**
-   - Classification finale
-   - 2 couches denses (128 et 64 neurones)
-   - BatchNormalization et Dropout
-   - Couche de sortie avec activation softmax
-
-### Prétraitement des Données
-
-1. **Chargement des données**
-   - Utilisation du dataset NSL-KDD
-   - Séparation features/labels
-
-2. **Traitement des features**
-   - Encodage one-hot des variables catégorielles
-   - Standardisation des variables numériques
-   - Reshape pour Conv1D
-
-3. **Traitement des labels**
-   - Encodage des classes
-   - Conversion en format catégorique
-
-### Entraînement
-
-```python
-# Configuration
-- Optimizer: Adam
-- Loss: Categorical Crossentropy
-- Metrics: Accuracy, Precision, Recall
-- Batch Size: 32
-- Epochs: 50 (avec early stopping)
-```
-
-**Callbacks**:
-- EarlyStopping: Arrêt si pas d'amélioration
-- ReduceLROnPlateau: Réduction du learning rate
-
-## Installation
-
-1. Créer un environnement virtuel :
+**Lire la config :**
 ```bash
-python -m venv venv
-source venv/Scripts/activate  # Windows
-source venv/bin/activate      # Linux/Mac
+curl http://localhost:5000/api/settings
 ```
-
-2. Installer les dépendances :
+**Modifier la config :**
 ```bash
-pip install -r requirements.txt
+curl -X POST http://localhost:5000/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{"thresholds": {"bruteForce": 20}, "modules": {"xss": false}}'
 ```
-
-## Utilisation
-
-### Entraînement du Modèle
-
+**Lire les règles :**
 ```bash
-python -m app.model.train_model
+curl http://localhost:5000/api/rules
+```
+**Modifier les règles :**
+```bash
+curl -X POST http://localhost:5000/api/rules \
+  -H "Content-Type: application/json" \
+  -d '[{"id":1,"name":"Brute Force","description":"...","action":"..."}]'
 ```
 
-Le modèle entraîné sera sauvegardé dans `data/models/` avec :
-- Le modèle TensorFlow
-- Le scaler pour la normalisation
-- L'encodeur de labels
+---
 
-### API Endpoints
-
-#### GET /api/alerts
-- Liste les dernières alertes détectées
-- Paramètres de filtrage disponibles
-
-#### POST /api/alerts/analyze
-- Analyse un paquet réseau
-- Retourne la prédiction du modèle
-
-## Performance
-
-Le modèle est évalué sur :
-- Accuracy
-- Precision
-- Recall
-- Matrice de confusion
-
-Les graphiques d'entraînement sont sauvegardés automatiquement. 
+Voir aussi le README frontend pour l’intégration UI/UX. 

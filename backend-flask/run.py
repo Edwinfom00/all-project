@@ -1,5 +1,7 @@
 from app import create_app
 import logging
+from app.routes.settings import settings_bp
+from app.routes.rules import rules_bp
 
 # Configuration du logging
 logging.basicConfig(level=logging.DEBUG)
@@ -7,6 +9,8 @@ logger = logging.getLogger(__name__)
 
 # Création de l'application Flask
 app = create_app()
+app.register_blueprint(settings_bp)
+app.register_blueprint(rules_bp)
 
 if __name__ == '__main__':
     try:
