@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 import logging
 from ..model.ai_model import predict_intrusion, preprocess_data
+import socket
 
 # Configuration du logging
 logging.basicConfig(level=logging.DEBUG)
@@ -14,6 +15,8 @@ class NetworkScanner:
     def __init__(self):
         self.data_file = Path(__file__).parent.parent / 'data' / 'network_data.json'
         self._initialize_data()
+        self.no_connection_cycles = 0  # Compteur de cycles sans connexion
+        self.max_no_connection_cycles = 10  # Nombre de cycles avant alerte défaillance
         
     def _initialize_data(self):
         """Initialise le fichier de données s'il n'existe pas"""
@@ -43,27 +46,44 @@ class NetworkScanner:
     def _process_connection(self, conn):
         """Traite une connexion réseau"""
         try:
+            # Déterminer le protocole sous forme de chaîne
+            if hasattr(conn, 'type'):
+                if conn.type == socket.SOCK_STREAM:
+                    protocol = 'tcp'
+                elif conn.type == socket.SOCK_DGRAM:
+                    protocol = 'udp'
+                else:
+                    protocol = 'other'
+            else:
+                protocol = 'other'
+
             # Préparer les données pour le modèle
+            def safe_ip(ip):
+                # Retourne une IPv4 ou '0.0.0.0' si ce n'est pas une IPv4
+                if isinstance(ip, str) and '.' in ip:
+                    return ip
+                return '0.0.0.0'
+
             connection_data = {
-                'source_ip': conn.laddr.ip if conn.laddr else '0.0.0.0',
-                'dest_ip': conn.raddr.ip if conn.raddr else '0.0.0.0',
+                'source_ip': safe_ip(conn.laddr.ip) if conn.laddr else '0.0.0.0',
+                'dest_ip': safe_ip(conn.raddr.ip) if conn.raddr else '0.0.0.0',
                 'source_port': conn.laddr.port if conn.laddr else 0,
                 'dest_port': conn.raddr.port if conn.raddr else 0,
-                'protocol': conn.type,
+                'protocol': protocol,
                 'status': conn.status if hasattr(conn, 'status') else 'NONE',
                 'timestamp': datetime.now().isoformat()
             }
-            
+
             # Prétraiter les données
             processed_data = preprocess_data(connection_data)
-            
+
             # Analyser avec le modèle d'IA
             is_intrusion, attack_type = predict_intrusion(processed_data)
-            
+
             # Ajouter les résultats de l'analyse
             connection_data['attackType'] = attack_type
             connection_data['severity'] = 'high' if is_intrusion else 'low'
-            
+
             return connection_data
         except Exception as e:
             logger.error(f"Erreur lors du traitement de la connexion: {e}")
@@ -98,13 +118,32 @@ class NetworkScanner:
                             'severity': processed['severity']
                         }
                         new_alerts.append(alert)
-            
+
+            # Détection de défaillance réseau : aucune connexion détectée
+            if len(processed_connections) == 0:
+                self.no_connection_cycles += 1
+                if self.no_connection_cycles >= self.max_no_connection_cycles:
+                    # Générer une alerte spéciale
+                    alert = {
+                        'id': len(data['alerts']) + 1,
+                        'sourceIp': 'N/A',
+                        'destinationIp': 'N/A',
+                        'protocol': 'N/A',
+                        'timestamp': datetime.now().isoformat(),
+                        'attackType': 'Défaillance réseau',
+                        'severity': 'critical'
+                    }
+                    new_alerts.append(alert)
+                    self.no_connection_cycles = 0  # Reset le compteur
+            else:
+                self.no_connection_cycles = 0  # Reset si au moins une connexion
+
             # Mettre à jour les données
             data['connections'] = processed_connections[-100:]  # Garder les 100 dernières connexions
-            data['alerts'] = new_alerts[-50:]  # Garder les 50 dernières alertes
+            data['alerts'] = (data['alerts'] + new_alerts)[-50:]  # Garder les 50 dernières alertes
             data['stats']['total_connections'] = len(processed_connections)
-            data['stats']['total_alerts'] = len(new_alerts)
-            data['stats']['active_threats'] = len([a for a in new_alerts if a['severity'] == 'high'])
+            data['stats']['total_alerts'] = len(data['alerts'])
+            data['stats']['active_threats'] = len([a for a in data['alerts'] if a['severity'] == 'high'])
             
             # Sauvegarder les données
             self._save_data(data)
