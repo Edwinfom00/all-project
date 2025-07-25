@@ -1,0 +1,11 @@
+flowchart LR
+    A[Trafic réseau réel] --> B[Collecte & Extraction des logs]
+    B --> C[Prétraitement nettoyage, normalisation, encodage]
+    C --> D[Extraction des features]
+    D --> E[Passage dans le modèle IA CNN-LSTM]
+    E --> F[Prédiction : attaque ou normal]
+    F -- "Si attaque" --> G[Création d'une alerte]
+    F -- "Si normal" --> H[Aucune alerte]
+    G --> I[Stockage de l'alerte logs, fichiers]
+    I --> J[Affichage dans le frontend]
+    J --> K[Utilisateur informé] 

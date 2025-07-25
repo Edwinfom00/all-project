@@ -1,0 +1,28 @@
+flowchart TD
+
+Utilisateur["Utilisateur (navigateur web)"]
+
+subgraph Frontend [Frontend Next.js]
+    F[Interface utilisateur - React/Next.js]
+end
+
+subgraph Backend [Backend Flask]
+    B1[API REST Flask]
+    B2[Gestion des règles, settings, logs]
+    B3[Appel au modèle IA]
+end
+
+subgraph Donnees [Données & Modèles]
+    D1[Jeu de données NSL-KDD]
+    D2[Modèle IA - CNN-LSTM]
+    D3[Logs, historiques, alertes]
+end
+
+Utilisateur -- HTTP/HTTPS --> F
+F -- Appels API (fetch) --> B1
+B1 -- "Lecture/écriture" --> B2
+B1 -- "Prédiction" --> B3
+B3 -- "Chargement/Sauvegarde" --> D2
+B2 -- "Lecture/écriture" --> D3
+B1 -- "Accès aux données" --> D1
+B1 -- "Réponse API (JSON)" --> F

@@ -38,7 +38,7 @@ def get_model() -> IDSModel:
             LATEST_MODEL = IDSModel(input_shape=(145, 1), num_classes=len(ATTACK_TYPES))
     return LATEST_MODEL
 
-def predict_intrusion(data: Dict[str, Any]) -> Tuple[bool, str]:
+def predict_intrusion(data: Dict[str, Any]) -> Tuple[bool, str, float]:
     try:
         print(f"Données d'entrée: {data}")
         
@@ -62,7 +62,7 @@ def predict_intrusion(data: Dict[str, Any]) -> Tuple[bool, str]:
         # Vérification finale avant reshape
         if len(features_normalized) != 145:
             print(f"ERREUR: Taille après normalisation: {len(features_normalized)}")
-            return False, "Error"
+            return False, "Error", 0.0
         
         # Reshape pour le modèle (batch_size=1, features=145, channels=1)
         X = np.array(features_normalized, dtype=np.float32).reshape(1, 145, 1)
@@ -77,20 +77,22 @@ def predict_intrusion(data: Dict[str, Any]) -> Tuple[bool, str]:
         print(f"Classe prédite: {predicted_class}, Confiance: {confidence:.3f}")
 
         # Conversion en résultat
-        attack_type = ATTACK_TYPES.get(predicted_class, "Unknown")
+        if predicted_class in ATTACK_TYPES:
+            attack_type = ATTACK_TYPES[predicted_class]
+        else:
+            attack_type = "Unknown"
+            # Loguer le cas inconnu pour analyse future
+            with open("unknown_predictions.log", "a") as f:
+                f.write(f"{predicted_class},{confidence},{data}\n")
         is_intrusion = attack_type != "Normal"
-
-        return is_intrusion, attack_type
+        return is_intrusion, attack_type, float(confidence)
 
     except Exception as e:
         print(f"Erreur lors de la prédiction : {str(e)}")
         import traceback
         print(f"Traceback: {traceback.format_exc()}")
-        
-        # En cas d'erreur, on simule une prédiction
-        is_intrusion = random.random() < 0.3
-        attack_type = random.choice(list(ATTACK_TYPES.values())) if is_intrusion else "Normal"
-        return is_intrusion, attack_type
+        # En cas d'erreur, on retourne toujours pas d'intrusion
+        return False, "Normal", 0.0
 
 def preprocess_data(data: Dict[str, Any]) -> Dict[str, Any]:
     """

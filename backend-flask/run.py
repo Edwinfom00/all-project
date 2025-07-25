@@ -11,6 +11,8 @@ logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
     app = create_app()
+    app.register_blueprint(settings_bp)
+    app.register_blueprint(rules_bp)
 
     # Démarrer le scanner réseau en arrière-plan
     scanner_thread = threading.Thread(target=network_scanner.scanner.start, daemon=True)

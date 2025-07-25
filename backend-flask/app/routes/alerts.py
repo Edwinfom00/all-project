@@ -21,7 +21,11 @@ def detect_intrusion():
         return jsonify({'error': 'Champs requis manquants'}), 400
     
     # Prédiction avec le modèle
-    is_intrusion, attack_type = predict_intrusion(data)
+    is_intrusion, attack_type, confidence = predict_intrusion(data)
+
+    # Bloquer les alertes pour trafic local
+    if (data.get('source_ip') in ['127.0.0.1', 'localhost'] and data.get('destination_ip') in ['127.0.0.1', 'localhost']):
+        return jsonify({'message': 'Trafic local ignoré', 'timestamp': datetime.now().isoformat()}), 200
     
     if is_intrusion:
         alert = {
@@ -31,7 +35,8 @@ def detect_intrusion():
             'protocol': data.get('protocol', 'unknown'),
             'timestamp': datetime.now().isoformat(),
             'attackType': attack_type,
-            'severity': 'high' if attack_type in ['SQL Injection', 'Remote Code Execution'] else 'medium'
+            'severity': 'high' if attack_type in ['SQL Injection', 'Remote Code Execution'] else 'medium',
+            'confidence': confidence
         }
         alerts.append(alert)
         # Garder seulement les 1000 dernières alertes
