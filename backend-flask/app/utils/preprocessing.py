@@ -2,6 +2,7 @@ from typing import Dict, Any, List
 import re
 import ast
 import os
+import numpy as np
 
 def parse_snort_log(log_line: str) -> Dict[str, Any]:
     """
@@ -48,7 +49,7 @@ def extract_features(log_data: Dict[str, Any]) -> List[float]:
     # === FEATURES NUMÉRIQUES DE BASE ===
     # Duration (souvent 0 pour les logs temps réel)
     if '0' in col_to_idx:
-        features[col_to_idx['0']] = 0
+        features[col_to_idx['0']] = log_data.get('duration', 0)
     
     # Protocol type (position standard dans NSL-KDD)
     protocol = log_data.get('protocol', 'tcp').lower()
@@ -58,8 +59,7 @@ def extract_features(log_data: Dict[str, Any]) -> List[float]:
     service = port_to_service(dest_port)
     
     # Flags (connection state) - par défaut SF (normal)
-    flag = 'SF'
-    
+    flag = log_data.get('flag', 'SF')
     # Source bytes (simulé)
     if '491' in col_to_idx:
         features[col_to_idx['491']] = log_data.get('bytes_sent', 491)
@@ -116,33 +116,43 @@ def extract_features(log_data: Dict[str, Any]) -> List[float]:
     is_guest_login = 0
     
     # === FEATURES DE TRAFIC (dernières 2 secondes) ===
-    count = log_data.get('connections_count', 2)  # Nombre de connexions
-    srv_count = 2  # Connexions vers le même service
+    # C'est une caractéristique cruciale pour la détection des DoS
+    count = log_data.get('connections_count', 2)  
     
-    # Ratios d'erreurs (simulés)
-    serror_rate = 0.0
-    srv_serror_rate = 0.0
-    rerror_rate = 0.0
-    srv_rerror_rate = 0.0
-    same_srv_rate = 1.0
-    diff_srv_rate = 0.0
-    srv_diff_host_rate = 0.0
+    # Pour les attaques DoS, on s'attend à un nombre élevé de connexions
+    # Donc on amplifie cette caractéristique pour la détection
+    if count > 10:  # Seuil pour considérer comme potentiel DoS
+        count = min(count * 2, 500)  # Amplifier mais plafonner
+    srv_count = count  # Connexions vers le même service
     
+    # Ratios d'erreurs - importants pour la détection DoS
+    serror_rate = log_data.get('serror_rate', 0.0)
+    srv_serror_rate = log_data.get('srv_serror_rate', 0.0)
+    rerror_rate = log_data.get('rerror_rate', 0.0)
+    srv_rerror_rate = log_data.get('srv_rerror_rate', 0.0)
+    
+    # Pour les attaques DoS SYN flood, le taux d'erreur SYN est élevé
+    if dest_port == 80 and count > 20:  # Potentiel SYN flood sur HTTP
+        serror_rate = max(serror_rate, 0.7)
+        srv_serror_rate = max(srv_serror_rate, 0.7)
+    
+    same_srv_rate = log_data.get('same_srv_rate', 1.0)
+    diff_srv_rate = log_data.get('diff_srv_rate', 0.0)
+    srv_diff_host_rate = log_data.get('srv_diff_host_rate', 0.0)
     # === FEATURES DE TRAFIC (dernières 100 connexions) ===
-    dst_host_count = 150
-    dst_host_srv_count = 25
-    dst_host_same_srv_rate = 0.17
-    dst_host_diff_srv_rate = 0.03
-    dst_host_same_src_port_rate = 0.17
-    dst_host_srv_diff_host_rate = 0.0
-    dst_host_serror_rate = 0.0
-    dst_host_srv_serror_rate = 0.0
-    dst_host_rerror_rate = 0.05
-    dst_host_srv_rerror_rate = 0.0
-    
+    dst_host_count = log_data.get('dst_host_count', 150)
+    dst_host_srv_count = log_data.get('dst_host_srv_count', 25)
+    dst_host_same_srv_rate = log_data.get('dst_host_same_srv_rate', 0.17)
+    dst_host_diff_srv_rate = log_data.get('dst_host_diff_srv_rate', 0.03)
+    dst_host_same_src_port_rate = log_data.get('dst_host_same_src_port_rate', 0.17)
+    dst_host_srv_diff_host_rate = log_data.get('dst_host_srv_diff_host_rate', 0.0)
+    dst_host_serror_rate = log_data.get('dst_host_serror_rate', 0.0)
+    dst_host_srv_serror_rate = log_data.get('dst_host_srv_serror_rate', 0.0)
+    dst_host_rerror_rate = log_data.get('dst_host_rerror_rate', 0.05)
+    dst_host_srv_rerror_rate = log_data.get('dst_host_srv_rerror_rate', 0.0)
     # === ASSIGNATION DES VALEURS AUX POSITIONS CORRECTES ===
     numeric_features = [
-        0,  # duration
+        log_data.get('duration', 0),  # duration
         dest_bytes,  # dst_bytes
         land, wrong_fragment, urgent, hot, num_failed_logins, logged_in,
         num_compromised, root_shell, su_attempted, num_root, num_file_creations,
@@ -185,111 +195,60 @@ def extract_features(log_data: Dict[str, Any]) -> List[float]:
             if col in col_to_idx:
                 features[col_to_idx[col]] = 1.0 if flag == flag_name else 0.0
     
-    # Attack type (toujours normal par défaut pour les nouvelles données)
-    attack_prefix = 'normal_'
-    for col in NSLKDD_COLUMNS:
-        if col.startswith(attack_prefix):
-            if col in col_to_idx:
-                # Mettre 'normal' à 1, tous les autres à 0
-                features[col_to_idx[col]] = 1.0 if col == 'normal_normal' else 0.0
+    # Attack type - NE PAS mettre normal à 1 par défaut
+    # Laisser le modèle décider du type
     
-    # S'assurer que nous avons exactement 145 features
-    if len(features) != 145:
-        features = features[:145] + [0.0] * max(0, 145 - len(features))
-    
-    return features
-
-def port_to_service(port: int) -> str:
-    """
-    Convertit un numéro de port en nom de service pour le mapping NSL-KDD.
-    """
-    port_map = {
-        20: 'ftp_data', 21: 'ftp', 22: 'ssh', 23: 'telnet', 25: 'smtp',
-        53: 'domain', 80: 'http', 110: 'pop_3', 143: 'imap4', 443: 'http_443',
-        993: 'imap4', 995: 'pop_3', 8001: 'http_8001', 2784: 'http_2784'
-    }
-    return port_map.get(port, 'other')
-
-def format_nslkdd_features(log_data: Dict[str, Any]) -> List[str]:
-    """
-    Formate les données réseau au format NSL-KDD textuel.
-    Retourne une liste de strings correspondant aux 41 features de base NSL-KDD.
-    """
-    # Extraire les informations de base
-    protocol = log_data.get('protocol', 'tcp').lower()
-    dest_port = log_data.get('dest_port', 80)
-    service = port_to_service(dest_port)
-    flag = 'SF'  # Normal connection
-    
-    # Construire la ligne NSL-KDD
-    nslkdd_line = [
-        '0',  # duration
-        protocol,  # protocol_type
-        service,  # service
-        flag,  # flag
-        '491',  # src_bytes
-        '0',   # dst_bytes
-        '0',   # land
-        '0',   # wrong_fragment
-        '0',   # urgent
-        '0',   # hot
-        '0',   # num_failed_logins
-        '0',   # logged_in
-        '0',   # num_compromised
-        '0',   # root_shell
-        '0',   # su_attempted
-        '0',   # num_root
-        '0',   # num_file_creations
-        '0',   # num_shells
-        '0',   # num_access_files
-        '0',   # num_outbound_cmds
-        '0',   # is_host_login
-        '0',   # is_guest_login
-        '2',   # count
-        '2',   # srv_count
-        '0',   # serror_rate
-        '0',   # srv_serror_rate
-        '0',   # rerror_rate
-        '0',   # srv_rerror_rate
-        '1',   # same_srv_rate
-        '0',   # diff_srv_rate
-        '0',   # srv_diff_host_rate
-        '150', # dst_host_count
-        '25',  # dst_host_srv_count
-        '0.17', # dst_host_same_srv_rate
-        '0.03', # dst_host_diff_srv_rate
-        '0.17', # dst_host_same_src_port_rate
-        '0',    # dst_host_srv_diff_host_rate
-        '0',    # dst_host_serror_rate
-        '0',    # dst_host_srv_serror_rate
-        '0.05', # dst_host_rerror_rate
-        '0',    # dst_host_srv_rerror_rate
-        'normal' # class (sera prédit par le modèle)
-    ]
-    
-    return nslkdd_line
+    return features 
 
 def normalize_features(features: List[float]) -> List[float]:
     """
-    Normalise les features pour le modèle ML.
-    Utilise une normalisation min-max basée sur les statistiques NSL-KDD.
+    Normalise les features en utilisant une normalisation min-max.
     """
-    # Valeurs maximales approximatives pour chaque feature NSL-KDD
-    # Basées sur les statistiques du dataset NSL-KDD
-    max_values = [
-        58329, 1379963390, 1, 3, 14, 101, 5, 1, 884, 1, 1, 9, 28, 5, 9, 2, 1, 1,
-        511, 511, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 255, 255, 1.0, 1.0, 1.0, 1.0,
-        1.0, 1.0, 1.0, 1.0
-    ] + [1.0] * (145 - 37)  # Le reste sont des features one-hot (0 ou 1)
+    if not features:
+        return features
+    
+    # Convertir en numpy array pour faciliter les calculs
+    features_array = np.array(features, dtype=np.float32)
+    
+    # Éviter la division par zéro
+    feature_min = np.min(features_array)
+    feature_max = np.max(features_array)
+    
+    if feature_max == feature_min:
+        # Si toutes les valeurs sont identiques, retourner des zéros
+        return [0.0] * len(features)
     
     # Normalisation min-max
-    normalized = []
-    for i, (feature, max_val) in enumerate(zip(features, max_values)):
-        if max_val == 0:
-            normalized.append(0.0)
-        else:
-            # Clamp entre 0 et max_val, puis normalise
-            clamped = max(0, min(feature, max_val))
-            normalized.append(clamped / max_val)
+    normalized = (features_array - feature_min) / (feature_max - feature_min)
     
-    return normalized
+    # Remplacer les valeurs NaN par 0
+    normalized = np.nan_to_num(normalized, nan=0.0, posinf=0.0, neginf=0.0)
+    
+    return normalized.tolist()
+
+def port_to_service(port: int) -> str:
+    """
+    Convertit un numéro de port en nom de service.
+    """
+    service_map = {
+        21: 'ftp',
+        22: 'ssh',
+        23: 'telnet',
+        25: 'smtp',
+        53: 'domain',
+        80: 'http',
+        110: 'pop_3',
+        143: 'imap',
+        443: 'http_443',
+        993: 'imap',
+        995: 'pop_3',
+        1433: 'sql_net',
+        1521: 'sql_net',
+        3306: 'sql_net',
+        5432: 'sql_net',
+        5900: 'vnc',
+        8080: 'http_8001',
+        8443: 'http_443'
+    }
+    
+    return service_map.get(port, 'other') 

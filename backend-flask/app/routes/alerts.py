@@ -2,6 +2,9 @@ from flask import Blueprint, jsonify, request
 from ..model.ai_model import predict_intrusion
 from datetime import datetime
 import uuid
+import json
+from app.utils.network_data import get_network_data
+from app.config import DATA_FILE
 
 alerts_bp = Blueprint('alerts', __name__)
 
@@ -11,6 +14,17 @@ alerts = []
 @alerts_bp.route('/alerts', methods=['GET'])
 def get_alerts():
     return jsonify(alerts)
+
+@alerts_bp.route('/alerts/<int:alert_id>', methods=['DELETE'])
+def delete_alert(alert_id):
+    data = get_network_data()
+    if data is None:
+        return jsonify({'error': 'Erreur lors de la récupération des données'}), 500
+    original_len = len(data['alerts'])
+    data['alerts'] = [a for a in data['alerts'] if a['id'] != alert_id]
+    with open(DATA_FILE, 'w') as f:
+        json.dump(data, f, indent=2)
+    return jsonify({'deleted': original_len - len(data['alerts'])})
 
 @alerts_bp.route('/detect', methods=['POST'])
 def detect_intrusion():

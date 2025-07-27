@@ -2,462 +2,180 @@
   "connections": [],
   "alerts": [
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616448,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:46.594103",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:40:48.016871",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616451,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:46.673321",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:40:51.044226",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616454,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:46.761189",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:40:54.098707",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616457,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:46.840403",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:40:57.128813",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "0.0.0.0",
-      "destinationIp": "0.0.0.0",
+      "id": 1753616460,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:46.918896",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:41:00.150354",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616463,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.007822",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:41:03.274010",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616466,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.087029",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:41:06.363198",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616469,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.168915",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:41:09.432216",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616683,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.249461",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:44:43.247935",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616686,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.328950",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:44:46.421400",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616689,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.414153",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:44:49.543765",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616692,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.496196",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:44:52.666798",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616695,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.590899",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:44:55.889595",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616698,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.693118",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:44:58.976623",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616702,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.790299",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:45:02.045913",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616705,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.889280",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:45:05.084067",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     },
     {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
+      "id": 1753616708,
+      "sourceIp": "129.0.60.57",
+      "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:47.992455",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "0.0.0.0",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.094354",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.186996",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.316081",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.427983",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.527009",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.624124",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "0.0.0.0",
-      "destinationIp": "0.0.0.0",
-      "protocol": "udp",
-      "timestamp": "2025-07-25T04:28:48.712152",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.796684",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.882408",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:48.968074",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.059236",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.150362",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.223044",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.296614",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.365269",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.435059",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.505936",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.587593",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.668961",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.763605",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.845194",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:49.922900",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.012916",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.087997",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "0.0.0.0",
-      "destinationIp": "0.0.0.0",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.168891",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.247302",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.331923",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.416081",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.499505",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.594885",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.678246",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.760203",
-      "attackType": "Unknown",
-      "severity": "high"
-    },
-    {
-      "id": 51,
-      "sourceIp": "127.0.0.1",
-      "destinationIp": "127.0.0.1",
-      "protocol": "tcp",
-      "timestamp": "2025-07-25T04:28:50.840246",
-      "attackType": "Unknown",
-      "severity": "high"
+      "timestamp": "2025-07-27T12:45:08.145552",
+      "attackType": "DoS (connexions multiples)",
+      "severity": "high",
+      "confidence": 0.95
     }
   ],
   "stats": {
-    "total_connections": 0,
-    "total_packets": 0,
-    "total_alerts": 50,
-    "active_threats": 50,
-    "blocked_attempts": 0,
+    "total_connections": 85854,
+    "total_alerts": 17,
+    "active_threats": 17,
     "system_health": 100
   }
 }

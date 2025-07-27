@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from .routes.stats import stats_bp
 from .routes.rules import rules_bp
+from .routes.alerts import alerts_bp
 
 def create_app():
     app = Flask(__name__)
@@ -13,6 +14,7 @@ def create_app():
 
     # Enregistrement des blueprints
     app.register_blueprint(stats_bp, url_prefix='/api/stats')
+    app.register_blueprint(alerts_bp, url_prefix='/api')
 
     @app.route('/health')
     def health_check():
