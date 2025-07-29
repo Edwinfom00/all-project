@@ -2,180 +2,212 @@
   "connections": [],
   "alerts": [
     {
-      "id": 1753616448,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784850,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:40:48.016871",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:30.436945",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616451,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784853,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:40:51.044226",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:33.724137",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616454,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784857,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:40:54.098707",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:37.089458",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616457,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784860,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:40:57.128813",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:40.449545",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616460,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784863,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:41:00.150354",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:43.820972",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616463,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784867,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:41:03.274010",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:47.140332",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616466,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784870,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:41:06.363198",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:50.419475",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616469,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784873,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:41:09.432216",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:53.733269",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616683,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784876,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:44:43.247935",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:27:56.956438",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616686,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784880,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:44:46.421400",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:28:00.367887",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616689,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784883,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:44:49.543765",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:28:03.682958",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616692,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784887,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:44:52.666798",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:28:07.018355",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616695,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784890,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:44:55.889595",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:28:10.353191",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.05
     },
     {
-      "id": 1753616698,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784893,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:44:58.976623",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:28:13.811411",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.04
     },
     {
-      "id": 1753616702,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784897,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:45:02.045913",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:28:17.122396",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.04
     },
     {
-      "id": 1753616705,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784900,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:45:05.084067",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:28:20.446763",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.03
     },
     {
-      "id": 1753616708,
-      "sourceIp": "129.0.60.57",
+      "id": 1753784903,
+      "sourceIp": "13.107.5.93",
       "destinationIp": "192.168.1.178",
       "protocol": "tcp",
-      "timestamp": "2025-07-27T12:45:08.145552",
-      "attackType": "DoS (connexions multiples)",
-      "severity": "high",
-      "confidence": 0.95
+      "timestamp": "2025-07-29T11:28:23.700067",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.03
+    },
+    {
+      "id": 1753784906,
+      "sourceIp": "13.107.5.93",
+      "destinationIp": "192.168.1.178",
+      "protocol": "tcp",
+      "timestamp": "2025-07-29T11:28:26.973559",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.03
+    },
+    {
+      "id": 1753784910,
+      "sourceIp": "13.107.5.93",
+      "destinationIp": "192.168.1.178",
+      "protocol": "tcp",
+      "timestamp": "2025-07-29T11:28:30.242452",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.03
+    },
+    {
+      "id": 1753784929,
+      "sourceIp": "35.223.238.178",
+      "destinationIp": "192.168.1.178",
+      "protocol": "tcp",
+      "timestamp": "2025-07-29T11:28:49.887509",
+      "attackType": "Port Scan",
+      "severity": "medium",
+      "confidence": 0.03
     }
   ],
   "stats": {
-    "total_connections": 85854,
-    "total_alerts": 17,
-    "active_threats": 17,
-    "system_health": 100
+    "total_connections": 114855,
+    "total_alerts": 59,
+    "active_threats": 45,
+    "system_health": 100,
+    "last_update": "2025-07-29T11:15:50.710052",
+    "detection_rate": 0.02
   }
 }

@@ -18,6 +18,7 @@ def main():
     args = parser.parse_args()
     
     # Créer et démarrer le scanner
+    # L'argument 'interface' est ignoré pour l'instant (psutil ne le supporte pas)
     scanner = NetworkScanner(interface=args.interface)
     try:
         print("Démarrage du scanner réseau...")

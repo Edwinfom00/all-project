@@ -10,41 +10,65 @@ from ..utils.preprocessing import extract_features, normalize_features
 MODEL_DIR = os.path.join(os.path.dirname(__file__), "../../../data/models")
 LATEST_MODEL = None  # Sera chargé à la première utilisation
 
-# Seuils de détection pour différents types d'attaques
+# SEUILS CORRIGÉS - Plus bas pour détecter plus d'attaques
 DETECTION_THRESHOLDS = {
-    "DoS": 0.6,      # Seuil plus bas pour les DoS pour augmenter la sensibilité
-    "Probe": 0.7,
-    "R2L": 0.75,
-    "U2R": 0.8,
-    "Normal": 0.9,   # Seuil élevé pour éviter les faux négatifs
-    "Unknown": 0.5   # Seuil bas pour "Unknown" pour éviter les fausses alertes
+    "DoS": 0.6,      # Réduit de 0.8 à 0.6
+    "Probe": 0.5,    # Réduit de 0.7 à 0.5
+    "R2L": 0.65,
+    "U2R": 0.7,
+    "Normal": 0.4,   # Réduit de 0.9 à 0.4
+    "Unknown": 0.3   # Réduit pour éviter les fausses alertes
 }
 
-# Règles de détection basées sur les caractéristiques du trafic
 def detect_dos_with_rules(data: Dict[str, Any]) -> Tuple[bool, float]:
-    """Détecte une attaque DoS basée sur des règles simples"""
-    # Caractéristiques typiques d'une attaque DoS
+    """Détecte une attaque DoS basée sur des règles simples - VERSION CORRIGÉE"""
     connections_count = data.get('connections_count', 0)
     bytes_sent = data.get('bytes_sent', 0)
     dest_port = data.get('dest_port', 0)
     flag = data.get('flag', '')
     
-    # Règles de détection DoS
-    if connections_count > 40 and dest_port == 80:
-        return True, 0.85  # Forte probabilité de DoS sur HTTP
+    # RÈGLES CORRIGÉES pour DoS
+    # Vraie attaque DoS : beaucoup de connexions vers service
+    if connections_count > 100 and dest_port in [80, 443, 22, 21, 25]:
+        return True, 0.9  # DoS vers service critique
     
-    if connections_count > 30 and flag == 'S0':
-        return True, 0.9  # Forte probabilité de SYN flood
+    if connections_count > 80 and flag in ['S0', 'S']:
+        return True, 0.95  # SYN flood évident
     
-    if bytes_sent > 3000 and connections_count > 20:
-        return True, 0.75  # Possible DoS volumétrique
+    if connections_count > 60 and bytes_sent > 5000:
+        return True, 0.85  # DoS volumétrique
+    
+    if connections_count > 150:  # Seuil très élevé pour DoS certain
+        return True, 0.9
+    
+    # Ne pas interférer avec les port scans (10-50 connexions)
+    # Laisser l'IA décider pour ces cas
+    return False, 0.0
+
+def detect_probe_with_rules(data: Dict[str, Any]) -> Tuple[bool, float]:
+    """Détecte une attaque Probe basée sur des règles simples - NOUVEAU"""
+    connections_count = data.get('connections_count', 0)
+    dest_port = data.get('dest_port', 0)
+    flag = data.get('flag', '')
+    
+    # Port scan typique : connexions modérées, ports variés
+    if 10 <= connections_count <= 60:
+        # Ports de scan typiques
+        if dest_port in [22, 23, 25, 53, 80, 110, 135, 139, 443, 445, 993, 995, 1433, 3389]:
+            return True, 0.8
+        
+        # Flags typiques de scan
+        if flag in ['REJ', 'S0', 'RSTO']:
+            return True, 0.75
+    
+    # Scan rapide avec peu de connexions mais ciblé
+    if 5 <= connections_count <= 15 and flag in ['REJ', 'RSTO']:
+        return True, 0.7
     
     return False, 0.0
+
 def load_latest_model() -> IDSModel:
-    """
-    Charge le dernier modèle entraîné.
-    """
-    # Trouve le dossier de modèle le plus récent
+    """Charge le dernier modèle entraîné."""
     try:
         model_dirs = [d for d in os.listdir(MODEL_DIR) if d.startswith("ids_model_")]
         if not model_dirs:
@@ -57,103 +81,154 @@ def load_latest_model() -> IDSModel:
         return IDSModel.load(model_path, scaler_path, encoder_path)
     except Exception as e:
         print(f"Erreur lors du chargement du modèle: {e}")
-        # Retourner un modèle par défaut
         return IDSModel(input_shape=(145, 1), num_classes=len(ATTACK_TYPES))
 
 def get_model() -> IDSModel:
-    """
-    Retourne l'instance du modèle, la charge si nécessaire.
-    """
+    """Retourne l'instance du modèle, la charge si nécessaire."""
     global LATEST_MODEL
     if LATEST_MODEL is None:
         try:
             LATEST_MODEL = load_latest_model()
         except Exception:
-            # Si pas de modèle, on utilise un modèle simulé
             LATEST_MODEL = IDSModel(input_shape=(145, 1), num_classes=len(ATTACK_TYPES))
     return LATEST_MODEL
 
+def debug_prediction(data, features_normalized, predictions):
+    import numpy as np
+    print("🔍 DEBUG PRÉDICTION:")
+    print(f"Connexions: {data.get('connections_count')}")
+    print(f"Port destination: {data.get('dest_port', 0)}")
+    print(f"Flag: {data.get('flag', '')}")
+    print(f"Features [20-25]: {features_normalized[20:25]}")
+    print("Prédictions brutes:")
+    for i, label in ATTACK_TYPES.items():
+        print(f"  {label}: {predictions[0][i]:.3f}")
+    pred_idx = int(np.argmax(predictions[0]))
+    if pred_idx in ATTACK_TYPES:
+        print(f"Classe prédite: {ATTACK_TYPES[pred_idx]}")
+    else:
+        print(f"❌ Classe prédite inconnue (index={pred_idx}) ! ATTACK_TYPES keys: {list(ATTACK_TYPES.keys())}")
+
 def predict_intrusion(data: Dict[str, Any]) -> Tuple[bool, str, float]:
+    """VERSION COMPLÈTEMENT CORRIGÉE de predict_intrusion"""
     try:
         # Vérifier d'abord avec les règles de détection DoS
         is_dos, dos_confidence = detect_dos_with_rules(data)
         if is_dos:
-            print(f"Attaque DoS détectée par règles avec confiance {dos_confidence}")
+            print(f"✅ DoS détecté par règles avec confiance {dos_confidence}")
             return True, "DoS", dos_confidence
         
-        # Extraction des features au format NSL-KDD (145 features)
+        # Vérifier avec les règles de détection Probe
+        is_probe, probe_confidence = detect_probe_with_rules(data)
+        if is_probe:
+            print(f"✅ Probe détecté par règles avec confiance {probe_confidence}")
+            return True, "Probe", probe_confidence
+        
+        # Extraction et normalisation des features
         features = extract_features(data)
         
-        # Vérifier que nous avons bien 145 features
         if len(features) != 145:
-            # Ajuster la taille si nécessaire
             if len(features) < 145:
                 features.extend([0.0] * (145 - len(features)))
             else:
                 features = features[:145]
         
-        # Normalisation des features
         features_normalized = normalize_features(features)
         
-        # Vérification finale avant reshape
         if len(features_normalized) != 145:
-            print(f"ERREUR: Taille après normalisation: {len(features_normalized)}")
-            # Si on détecte beaucoup de connexions, c'est probablement un DoS
-            if data.get('connections_count', 0) > 30:
+            print(f"❌ ERREUR: Taille après normalisation: {len(features_normalized)}")
+            # Fallback simple
+            connections_count = data.get('connections_count', 0)
+            if connections_count > 100:
                 return True, "DoS", 0.7
-            return False, "Normal", 0.0
+            elif connections_count > 10:
+                return True, "Probe", 0.6
+            return False, "Normal", 0.5
         
-        # Reshape pour le modèle (batch_size=1, features=145, channels=1)
+        # Reshape pour le modèle
         X = np.array(features_normalized, dtype=np.float32).reshape(1, 145, 1)
 
-        # Prédiction
+        # Prédiction IA
         model = get_model()
         predictions = model.predict(X)
         predicted_class = np.argmax(predictions[0])
         confidence = float(np.max(predictions[0]))
         
+        # Afficher le debug
+        debug_prediction(data, features_normalized, predictions)
+        
         # Conversion en résultat
         if predicted_class < len(ATTACK_TYPES):
             attack_type = ATTACK_TYPES[predicted_class]
         else:
-            # Si le trafic a des caractéristiques de DoS mais n'est pas reconnu
-            if data.get('connections_count', 0) > 20:
+            attack_type = "Normal"
+        
+        # NOUVELLE LOGIQUE : Renforcer les prédictions évidentes
+        connections_count = data.get('connections_count', 0)
+        dest_port = data.get('dest_port', 0)
+        
+        # Renforcer DoS si évident
+        if attack_type == "DoS" and connections_count > 80:
+            confidence = min(confidence + 0.2, 0.95)
+            print(f"🔥 Confiance DoS renforcée: {confidence}")
+        
+        # Renforcer Probe si évident  
+        elif attack_type == "Probe" and 10 <= connections_count <= 60:
+            confidence = min(confidence + 0.15, 0.90)
+            print(f"🔍 Confiance Probe renforcée: {confidence}")
+        
+        # Correction basée sur les patterns évidents
+        elif attack_type == "Normal":
+            if connections_count > 100:
                 attack_type = "DoS"
+                confidence = 0.8
+                print(f"🔄 Correction: Normal -> DoS (connexions: {connections_count})")
+            elif 15 <= connections_count <= 50:
+                attack_type = "Probe" 
                 confidence = 0.7
-            else:
-                attack_type = "Normal"  # Par défaut, considérer comme normal au lieu de "Unknown"
+                print(f"🔄 Correction: Normal -> Probe (connexions: {connections_count})")
         
         # Appliquer les seuils de détection
-        threshold = DETECTION_THRESHOLDS.get(attack_type, 0.7)
+        threshold = DETECTION_THRESHOLDS.get(attack_type, 0.5)
+        print(f"🎯 Seuil pour {attack_type}: {threshold}, Confiance: {confidence}")
         
-        # Si la confiance est inférieure au seuil, considérer comme normal
-        if confidence < threshold and attack_type != "Normal":
-            # Sauf pour DoS avec beaucoup de connexions
-            if attack_type == "DoS" and data.get('connections_count', 0) > 30:
-                pass  # Garder comme DoS
+        # Si confiance insuffisante, utiliser les règles de fallback
+        if confidence < threshold:
+            print(f"⚠️ Confiance {confidence} < seuil {threshold}")
+            
+            # Règles de fallback intelligentes
+            if connections_count > 100:
+                attack_type = "DoS"
+                confidence = 0.7
+                print(f"🔄 Fallback -> DoS")
+            elif 10 <= connections_count <= 60:
+                attack_type = "Probe"
+                confidence = 0.6
+                print(f"🔄 Fallback -> Probe")
             else:
                 attack_type = "Normal"
-                confidence = 1.0 - confidence  # Inverser la confiance
+                confidence = 0.5
+                print(f"🔄 Fallback -> Normal")
         
         is_intrusion = attack_type != "Normal"
+        print(f"🎯 RÉSULTAT FINAL: {attack_type}, Intrusion: {is_intrusion}, Confiance: {confidence}")
         return is_intrusion, attack_type, confidence
 
     except Exception as e:
-        print(f"Erreur lors de la prédiction : {str(e)}")
+        print(f"❌ Erreur lors de la prédiction : {str(e)}")
         import traceback
         print(f"Traceback: {traceback.format_exc()}")
         
-        # En cas d'erreur, vérifier quand même si c'est un DoS basé sur les règles
-        if data.get('connections_count', 0) > 40:
+        # Fallback simple en cas d'erreur
+        connections_count = data.get('connections_count', 0)
+        if connections_count > 100:
             return True, "DoS", 0.7
-        
-        # Sinon, pas d'intrusion
-        return False, "Normal", 0.0
+        elif connections_count > 10:
+            return True, "Probe", 0.6
+        return False, "Normal", 0.5
 
 def preprocess_data(data: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Prétraite les données pour le modèle : extrait et normalise les features.
-    """
+    """Prétraite les données pour le modèle : extrait et normalise les features."""
     try:
         features = extract_features(data)
         if len(features) != 145:
@@ -168,15 +243,12 @@ def preprocess_data(data: Dict[str, Any]) -> Dict[str, Any]:
         return data
     except Exception as e:
         print(f"Erreur lors du préprocessing: {str(e)}")
-        # Retourner des features par défaut en cas d'erreur
         data['features'] = [0.0] * 145
         data['features_count'] = 145
         return data
 
 def validate_features(features: List[float]) -> bool:
-    """
-    Valide que les features sont dans le bon format.
-    """
+    """Valide que les features sont dans le bon format."""
     if not isinstance(features, list):
         return False
     if len(features) != 145:
@@ -186,9 +258,7 @@ def validate_features(features: List[float]) -> bool:
     return True
 
 def debug_features(data: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Fonction de debug pour analyser les features extraites.
-    """
+    """Fonction de debug pour analyser les features extraites."""
     features = extract_features(data)
     
     debug_info = {
@@ -203,17 +273,13 @@ def debug_features(data: Dict[str, Any]) -> Dict[str, Any]:
     }
     
     return debug_info
+
 def load_model(model_path=None, scaler_path=None, encoder_path=None):
-    """
-    Charge le modèle ML depuis le fichier.
-    """
+    """Charge le modèle ML depuis le fichier."""
     if model_path is None:
-        # Par défaut, charge le dernier modèle
         return load_latest_model()
     return IDSModel.load(model_path, scaler_path, encoder_path)
 
 def save_model(model, model_path, scaler_path=None, encoder_path=None):
-    """
-    Sauvegarde le modèle ML dans un fichier.
-    """
+    """Sauvegarde le modèle ML dans un fichier."""
     model.save(model_path, scaler_path, encoder_path)
